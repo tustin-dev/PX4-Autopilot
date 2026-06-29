@@ -280,6 +280,12 @@
 
 /* SDMMC definitions ********************************************************/
 
+/* SDMMC1 IDMA cannot access SRAM1/2/3 or SRAM4. The driver uses this
+ * AXI SRAM-backed buffer for up to eight sectors per MMC multi-block command.
+ */
+
+#define STM32_SDMMC_IDMA_BOUNCE_BUFFER_SIZE (8 * 512)
+
 /* Init 480kHz, freq = PLL1Q/(2*div)  div =  PLL1Q/(2*freq) */
 
 #define STM32_SDMMC_INIT_CLKDIV     (300 << STM32_SDMMC_CLKCR_CLKDIV_SHIFT)
